@@ -1,0 +1,67 @@
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scnr = new Scanner(System.in);
+
+        String input = " ";
+        double num1;
+        double num2;
+        String equation;
+        boolean done = false;
+        double answer = 0.0;
+
+        //Loop to keep re-asking for an equation
+        while (!(input.equals("done"))) {
+
+            //Collect numbers
+            System.out.print("Please enter the first number: ");
+            num1 = scnr.nextDouble();
+            System.out.print("Please enter the second number: ");
+            num2 = scnr.nextDouble();
+
+            //Asks the user what they want to do with the numbers
+            System.out.print("What would you like to do? Please type either (+, -, *, /): ");
+            equation = scnr.next();
+
+            //Sees which operator to use
+            if (equation.equals("+")){ //ADDS
+                answer = num1 + num2;
+            }else if (equation.equals("-")){ //SUBTRACTS
+                answer = num1 - num2;
+            }else if (equation.equals("*")){ //MULTIPLIES
+                answer = num1 * num2;
+            }else if (equation.equals("/")){ //DIVIDES
+                answer = num1 / num2;
+            }
+
+            //Prints the answer
+            System.out.println("The answer is: " + answer);
+
+            //Resets the loop below to Continue or Not
+            int x = 1;
+            System.out.println("Reply \"Continue\" to continue or \"Done\" to be finished");
+
+            //Checks if the user is Done or Not
+            while(x == 1){
+                input = scnr.next();
+                if (input.equals("Continue")) {
+                    x = 0;
+                }else if (input.equals("Done")) {
+                    done = true;
+                    break;
+                } else {
+                    System.out.println("*WRONG INPUT*");
+                    System.out.println("Reply \"Continue\" to continue or \"Done\" to be finished");
+                    continue;
+                }
+            }
+
+            //Stops loop if typed "Done"
+            if (done){
+                break;
+            }
+        }
+    }
+}
+
